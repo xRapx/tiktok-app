@@ -9,6 +9,7 @@ function App() {
             <div className="App">
                 <Routes>
                     {publicRoutes.map((route, index) => {
+                        //Logic mặc định Layout = DefaultLayout Bọc bên ngoài children Pages => Content
                         let Layout = DefaultLayout;
 
                         if (route.layout) {
@@ -16,7 +17,7 @@ function App() {
                         } else if (route.layout === null) {
                             Layout = Fragment;
                         }
-
+                        // Truyền Mảng Pages từ components trong Routes
                         const Page = route.component;
                         return (
                             <Route

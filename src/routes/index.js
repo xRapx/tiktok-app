@@ -25,7 +25,7 @@ const publicRoutes = [
         layout: HeaderOnly,
     },
     {
-        path: '/search',
+        path: '/upload',
         component: Search,
         layout: null,
     },

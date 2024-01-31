@@ -12,7 +12,6 @@ import {
     faMagnifyingGlass,
     faSignOut,
     faSpinner,
-    faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,6 +25,10 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import style from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icon';
+import Image from '~/components/Image';
+import img1 from '~/assets/images/img-2.jpg';
+import img2 from '~/assets/images/img-3.jpg';
 
 const cx = classNames.bind(style);
 
@@ -145,9 +148,19 @@ function Header() {
                 <div className={cx('action')}>
                     {currentUser ? (
                         <Fragment>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Upload" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faUpload} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </Fragment>
@@ -160,7 +173,7 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenu}>
                         {currentUser ? (
-                            <img className={cx('user-avatar')} src="" alt="nguyen van a" />
+                            <Image className={cx('user-avatar')} src={img1} alt="nguyen van a" fallback={img2} />
                         ) : (
                             <button className={cx('btn-menu')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />

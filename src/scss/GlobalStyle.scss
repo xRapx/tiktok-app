@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: TikTokFont, sans-serif;
     height: 100%;
     font-size: 1.6rem;
     line-height: 1.5;
@@ -37,4 +37,22 @@ input,
 a[href] {
     color: var(--text);
     text-decoration: none;
+}
+
+// Font embeded
+
+@font-face {
+    font-family: TikTokFont;
+    font-weight: 700;
+    src: url('/assets/font/TikTokFont-Bold.woff2') format('opentype');
+}
+@font-face {
+    font-family: TikTokFont;
+    font-weight: 600;
+    src: url('/assets/font/TikTokFont-Semibold.woff2') format('opentype');
+}
+@font-face {
+    font-family: TikTokFont;
+    font-weight: 400;
+    src: url('/assets/font/TikTokFont-Regular.woff2') format('opentype');
 }

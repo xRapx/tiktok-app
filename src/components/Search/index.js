@@ -7,6 +7,7 @@ import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-s
 import classNames from 'classnames/bind';
 import style from './Search.module.scss';
 import AccountItems from '~/components/AccountItems';
+import * as apiSearch from '~/apiServices/apiSearch';
 
 const cx = classNames.bind(style);
 
@@ -24,19 +25,17 @@ function Search() {
             setSearchResult([]);
             return;
         }
-        // truoc khi goi API
-        setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounde)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                // sau khi goi API
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await apiSearch.search(debounde);
+
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchApi();
     }, [debounde]);
 
     const handleClear = () => {

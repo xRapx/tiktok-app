@@ -33,11 +33,13 @@
     align-items: center;
 }
 .action-btn {
+    position: relative;
+    display: flex;
     background-color: transparent;
     cursor: pointer;
     font-size: 2.2rem;
     color: #161823;
-    padding: 4px 12px;
+    padding: 4px 10px;
 }
 
 .user-avatar {
@@ -45,4 +47,6 @@
     height: 32px;
     object-fit: cover;
     border-radius: 50%;
+    margin-left: 14px;
+    cursor: pointer;
 }

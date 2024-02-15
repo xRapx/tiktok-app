@@ -20,8 +20,30 @@ html {
     font-size: 62.5%;
 }
 
+// Fonts
+@font-face {
+    font-family: TikTok-Fonts;
+    src: url('/assets/fonts/TikTokFont-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: TikTok-Fonts;
+    src: url('/assets/fonts/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+@font-face {
+    font-family: TikTok-Fonts;
+    src: url('/assets/fonts/TikTokFont-Bold.woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
+}
+
 body {
-    font-family: TikTokFont, sans-serif;
+    font-family: TikTok-Fonts, sans-serif;
     height: 100%;
     font-size: 1.6rem;
     line-height: 1.5;
@@ -37,22 +59,4 @@ input,
 a[href] {
     color: var(--text);
     text-decoration: none;
-}
-
-// Font embeded
-
-@font-face {
-    font-family: TikTokFont;
-    font-weight: 700;
-    src: url('/assets/font/TikTokFont-Bold.woff2') format('opentype');
-}
-@font-face {
-    font-family: TikTokFont;
-    font-weight: 600;
-    src: url('/assets/font/TikTokFont-Semibold.woff2') format('opentype');
-}
-@font-face {
-    font-family: TikTokFont;
-    font-weight: 400;
-    src: url('/assets/font/TikTokFont-Regular.woff2') format('opentype');
 }

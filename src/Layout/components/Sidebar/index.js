@@ -1,20 +1,37 @@
 import classNames from 'classnames/bind';
-import style from './Sidebar.module.scss';
+import styles from './Sidebar.module.scss';
 import Menu, { MenuItem } from './Menu';
+import {
+    HomeIcon,
+    HomeActiveIcon,
+    UserGroupIcon,
+    UserGroupActiveIcon,
+    LiveIcon,
+    LiveActiveIcon,
+} from '../../../components/Icon';
 import config from '~/config';
+import SuggestedAccounts from '~/components/SuggestedAccounts';
 
-const cx = classNames.bind(style);
+const cx = classNames.bind(styles);
 
-function SideBar() {
+function Sidebar() {
     return (
         <aside className={cx('wrapper')}>
             <Menu>
-                <MenuItem title="For you" to={config.routes.home} icon={null} />
-                <MenuItem title="Following" to={config.routes.follow} icon={null} />
-                <MenuItem title="Live" to={config.routes.live} icon={null} />
+                <MenuItem title="For You" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
+                <MenuItem
+                    title="Following"
+                    to={config.routes.follow}
+                    icon={<UserGroupIcon />}
+                    activeIcon={<UserGroupActiveIcon />}
+                />
+                <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
+
+            <SuggestedAccounts label="Suggested accounts" />
+            <SuggestedAccounts label="Following accounts" />
         </aside>
     );
 }
 
-export default SideBar;
+export default Sidebar;

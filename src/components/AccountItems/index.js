@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import style from './AccountItem.module.scss';
 import { Link } from 'react-router-dom';
@@ -20,5 +21,10 @@ function AccountItems({ data }) {
         </Link>
     );
 }
+
+// PropTypes validatess
+AccountItems.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default AccountItems;

@@ -7,7 +7,7 @@ import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-s
 import classNames from 'classnames/bind';
 import style from './Search.module.scss';
 import AccountItems from '~/components/AccountItems';
-import * as apiSearch from '~/apiServices/apiSearch';
+import * as apiSearch from '~/services/apiSearch';
 
 const cx = classNames.bind(style);
 

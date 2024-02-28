@@ -1,0 +1,103 @@
+.wrapper {
+    flex: 1 1 auto;
+    padding: 16px 16px 67px;
+    width: 800px;
+    max-width: 800px;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+.menu-item {
+    display: flex;
+    height: 50px;
+    position: sticky;
+    top: 60px;
+    padding-top: 8px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    margin-top: -16px;
+}
+.item {
+    justify-content: flex-start;
+    width: auto;
+    padding-right: 80px;
+    cursor: pointer;
+    .under-line:hover {
+        border-bottom: 1px solid black;
+    }
+}
+
+.line {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    right: 12px;
+    left: 0px;
+    border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+    transform: scaleY(0.5);
+}
+
+// wrapper title
+.wrapper-title {
+    display: flex;
+    flex-grow: 1;
+}
+.title {
+    display: block;
+    padding: 4px 41px 0px 10px;
+}
+
+// content item video
+
+.wrapper-video {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 20px 20px;
+}
+
+//Tile content
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+// button
+
+.follow-btn {
+    padding: 6px 16px;
+    height: 36px;
+}
+
+// video
+.div-video {
+    display: flex;
+    padding-left: 55px;
+    padding-top: 8px;
+}
+.video {
+    width: 332px;
+    height: 544px;
+}
+
+// Icons
+.wrapper-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(22, 24, 35, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    margin-top: 8px;
+}

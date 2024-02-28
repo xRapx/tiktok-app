@@ -1,6 +1,6 @@
 /* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../Contents.module.scss';
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';

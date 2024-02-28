@@ -1,5 +1,5 @@
 /* eslint-disable react/style-prop-object */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../Contents.module.scss';
 import classNames from 'classnames/bind';
@@ -12,6 +12,8 @@ import Video from '~/components/Videos/Videos';
 const cx = classNames.bind(styles);
 
 const ItemContents = () => {
+    const [click, setClick] = useState(true);
+
     return (
         <div className={cx('wrapper-video')}>
             <div>
@@ -24,10 +26,15 @@ const ItemContents = () => {
                         <span>Great Idea! What should I restore next?</span>
                         <button>More</button>
                     </div>
-
-                    <Button outline small className={cx('follow-btn')}>
-                        Follow
-                    </Button>
+                    {click ? (
+                        <Button outline small className={cx('follow-btn')} onClick={() => setClick(false)}>
+                            Follow
+                        </Button>
+                    ) : (
+                        <Button text outline large className={cx('follow-btn')} onClick={() => setClick(true)}>
+                            Đang Follow
+                        </Button>
+                    )}
                 </div>
                 <div className={cx('div-video')}>
                     <div className={cx('video')}>

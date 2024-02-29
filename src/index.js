@@ -5,14 +5,17 @@ import App from '~/App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './scss/GlobalStyle';
 import { AuthProvider } from './store/AuthContext';
+import { NotifyingProvider } from './store/NotifyingContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AuthProvider>
-            <GlobalStyle>
-                <App />
-            </GlobalStyle>
+            <NotifyingProvider>
+                <GlobalStyle>
+                    <App />
+                </GlobalStyle>
+            </NotifyingProvider>
         </AuthProvider>
     </React.StrictMode>,
 );

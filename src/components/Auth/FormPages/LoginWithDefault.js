@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './FormPages.module.scss';
-import config from '~/config';
 import Button from '~/components/Button';
+import { NotifyingContext } from '~/store/NotifyingContext';
+import configApi from '~/services/configApi';
 
 const cx = classNames.bind(styles);
 
 function LoginWithDefault() {
-    const [disabledSubmitted] = useState(false);
+    const [disabledSubmitted, setDisabledSubmited] = useState(false);
     const [valueAccount, setValueAccount] = useState('');
     const [valuePassword, setValuePassword] = useState('');
     const [showPass, setShowPass] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const { setInfoNotify } = useContext(NotifyingContext);
 
     const handleChangeValueAccount = (e) => {
         if (e.target.value.startsWith(' ')) {
@@ -39,27 +42,27 @@ function LoginWithDefault() {
         e.preventDefault();
         setIsLoading(true);
 
-        const data = await config.login(valueAccount, valuePassword);
+        const data = await configApi.login(valueAccount, valuePassword);
+        alert('Login Sussces');
 
         if (data.errCode) {
-            console.log({
-                content: 'Login failed. Try again later',
-                delay: 1500,
+            setInfoNotify({
+                message: 'Login failed. Try again later',
+                time: 1500,
                 isNotify: true,
             });
-
             setTimeout(() => {
                 setIsLoading(false);
             }, [300]);
         } else {
-            console.log({
-                content: 'Login successfull',
-                delay: 1500,
+            setInfoNotify({
+                message: 'Login successfull',
+                time: 1500,
                 isNotify: true,
             });
 
-            localStorage.setItem('user-id', JSON.stringify(data.data));
-            localStorage.setItem('token', JSON.stringify(`Bearer ${data.meta.token}`));
+            // localStorage.setItem('user-id', JSON.stringify(data.data));
+            // localStorage.setItem('token', JSON.stringify(`Bearer ${data.meta.token}`));
 
             setTimeout(() => {
                 setIsLoading(false);
@@ -68,13 +71,13 @@ function LoginWithDefault() {
         }
     };
 
-    // useEffect(() => {
-    //     if (valueAccount.length === 0 || valuePassword.length === 0) {
-    //         setDisabledSubmited(true);
-    //     } else {
-    //         setDisabledSubmited(false);
-    //     }
-    // }, [valueAccount, valuePassword]);
+    useEffect(() => {
+        if (valueAccount.length === 0 || valuePassword.length === 0) {
+            setDisabledSubmited(true);
+        } else {
+            setDisabledSubmited(false);
+        }
+    }, [valueAccount, valuePassword]);
 
     return (
         <form action="" method="POST" className={cx('login-inner')}>
@@ -91,6 +94,7 @@ function LoginWithDefault() {
                             onChange={handleChangeValueAccount}
                             type="text"
                             placeholder="Phone Number"
+                            required
                         />
                     </div>
                 </div>
@@ -102,6 +106,7 @@ function LoginWithDefault() {
                             type={showPass ? 'text' : 'password'}
                             placeholder="Password"
                             autoComplete="on"
+                            required
                         />
                         <div className={cx('control-pass')} onClick={handleShowPass}>
                             show pass

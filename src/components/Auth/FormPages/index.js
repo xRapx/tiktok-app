@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './FormPages.module.scss';
 import LoginWithDefault from './LoginWithDefault';
+import { BackIcon } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
 
@@ -67,7 +68,7 @@ const MENU_LOGIN = {
 
 function FormPages() {
     const [isFormLogin, setIsFormLogin] = useState(true);
-    // const [convertForm, setConvertForm] = useState(false);
+    const [convertForm, setConvertForm] = useState(false);
     const [form, setForm] = useState(null);
 
     const items = isFormLogin ? MENU_LOGIN : {};
@@ -79,36 +80,45 @@ function FormPages() {
     const handleNextForm = (value) => {
         if (value.children) {
             setForm(value.children);
-            // setConvertForm(true);
+            setConvertForm(true);
         }
     };
 
-    // const handleBackMenu = () => {
-    //     setConvertForm(false);
-    // };
+    const handleBackMenu = () => {
+        setConvertForm(false);
+    };
 
     return (
         <div className={cx('wrapper')}>
-            <Fragment>
-                <div className={cx('body')}>
-                    <h1 className={cx('title')}>{items.titleHeader}</h1>
-                    <div className={cx('main-form')}>
-                        {items.data.map((value) => (
-                            <button
-                                onClick={() => handleNextForm(value)}
-                                className={cx('channel-item')}
-                                key={value.title}
-                                disabled={value.disabled}
-                            >
-                                <p className={cx('text')}>{value.title}</p>
-                            </button>
-                        ))}
+            {convertForm ? (
+                <Fragment>
+                    <div onClick={handleBackMenu} className={cx('back')}>
+                        <BackIcon className={cx('back-btn')} />
                     </div>
-                </div>
-                <div className={cx('policy')}>
-                    <p className={cx('text-policy')}>{items.policy}</p>
-                </div>
-            </Fragment>
+                    {form.data}
+                </Fragment>
+            ) : (
+                <Fragment>
+                    <div className={cx('body')}>
+                        <h1 className={cx('title')}>{items.titleHeader}</h1>
+                        <div className={cx('main-form')}>
+                            {items.data.map((value) => (
+                                <button
+                                    onClick={() => handleNextForm(value)}
+                                    className={cx('channel-item')}
+                                    key={value.title}
+                                    disabled={value.disabled}
+                                >
+                                    <p className={cx('text')}>{value.title}</p>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    <div className={cx('policy')}>
+                        <p className={cx('text-policy')}>{items.policy}</p>
+                    </div>
+                </Fragment>
+            )}
             <div className={cx('footer-form')}>
                 <p className={cx('advice')}>
                     {items.titleFooter}

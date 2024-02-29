@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
@@ -9,7 +9,7 @@ import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function LoginWithDefault() {
-    const [disabledSubmitted, setDisabledSubmited] = useState(false);
+    const [disabledSubmitted] = useState(false);
     const [valueAccount, setValueAccount] = useState('');
     const [valuePassword, setValuePassword] = useState('');
     const [showPass, setShowPass] = useState(false);
